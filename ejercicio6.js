@@ -6,3 +6,27 @@ Nivel 2 atrapó el error: x is not defined
 Nivel 1 recibió el error: x is not defined
 ERROR FINAL capturado en el nivel superior: x is not defined
 */
+function nivel1() {
+    try {
+        let x;
+        x.nombre;
+    } catch (e) {
+        alert("Nivel 1 recibió el error: " + e.message);
+        throw e;
+    }
+}
+
+function nivel2() {
+    try {
+        nivel1();
+    } catch (e) {
+        alert("Nivel 2 atrapó el error: " + e.message);
+        throw e;
+    }
+}
+
+try {
+    nivel2();
+} catch (e) {
+    alert("ERROR FINAL capturado en el nivel superior: " + e.message);
+}
