@@ -13,19 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById("btnDividir");
     const a = document.getElementById("a");
     const b = document.getElementById("b");
-    const resultado = document.getElementById("resultado");
+    const resultadoDiv = document.getElementById("resultado");
 
     btn.addEventListener('click', () => {
-        resultado.textContent = 'Calculando...';
-        setTimeout(() => {
-            dividirAsync(a.value, b.value, (error, resultado) => {
+        resultadoDiv.textContent = 'Calculando...';
+        
+        dividirAsync(parseInt(a.value), parseInt(b.value), (error, resultado) => {
             if (error) {
-                resultado.textContent = error.message;
+                resultadoDiv.textContent = error.message;
             } else {
-                resultado.textContent = a.value+"/"+b.value+" = "+parseInt(a.value)/parseInt(b.value);
+                resultadoDiv.textContent = a.value + "/" + b.value + " = " + resultado;
             }
         });
-        }, 1000);
-        
     });
 });
